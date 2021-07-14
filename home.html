@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind:300">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gothic+A1:200">
+
+<title>New Tab</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<script>
+
+  var weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  function set_content__time(id, interval) {
+    var d = new Date();
+    var s_time = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+    document.getElementById(id).innerHTML = s_time;
+    setTimeout(function () { set_content__time(id, interval); }, interval);
+  }
+
+  function set_content__date(id, interval) {
+    var d = new Date();
+    s_date = d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + (d.getDate())).slice(-2);
+    s_weekday = weekdays[d.getDay()];
+    document.getElementById(id).innerHTML = s_date + " &nbsp;&ndash;&nbsp; " + s_weekday;
+    setTimeout(function () { set_content__date(id, interval); }, interval);
+  }
+
+</script>
+
+<style>
+  h1.time {
+    /* was:
+    font-family: "Shree Devanagari 714";
+    font-weight: 500;
+    */
+    font-family: "Gothic A1";
+    font-weight: 200;
+    font-size: 9.0em;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px gray;
+  }
+
+  h1.date {
+    margin-top: -0.7em;
+
+    font-family: Hind;
+    font-weight: 300;
+    font-size: 1.95em;
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px gray;
+  }
+
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: gray;
+    /* now using <img/> tag instead background-image, to have e.g. the possibility of right-click -> search Google for image
+    background-image: url(https://unsplash.it/1920/1080?random);
+    background-size: cover;
+    background-repeat: no-repeat;
+    */
+    font-family: Hind;
+    /* was: Avenir */
+    font-weight: 300;
+  }
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  .box {
+    margin: 0.5em;
+    color: white;
+    padding: 0 1em;
+  }
+
+  .box.halftrans {
+    background-color: #00000044;
+    border-radius: 0.7em;
+    padding: 0 1.7em;
+  }
+
+  .left {
+    position: absolute;
+    left: 2em;
+    text-align: left;
+  }
+
+  .right {
+    position: absolute;
+    right: 2em;
+    text-align: right;
+  }
+
+  .top {
+    position: absolute;
+    top: 3em;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 3em;
+  }
+
+  h1 {
+    margin: 0;
+  }
+</style>
+
+<body>
+
+  <img class="background" src="https://unsplash.it/1920/1080?random" />
+
+
+  <div class="box bottom left">
+
+    <h1 id="id_time" class="time" style="opacity: 0;"></h1>
+    <script>set_content__time("id_time", 1000);</script>
+    <script> $("#id_time").delay(300).animate({ opacity: 0.88 }, 700);</script>
+
+    <h1 id="id_date" class="date" style="opacity: 0; text-align: center;"></h1>
+    <script>set_content__date("id_date", 1000);</script>
+    <script> $("#id_date").delay(500).animate({ opacity: 0.66 }, 900);</script>
+
+  </div>
+
+
+
+  <div id="id_weather" class="box halftrans top right"
+    style="right: 5em !important; width:360px; background:white; opacity: 0; padding-bottom: 1.1em; -webkit-transition: opacity 2s ease-in;">
+    <!-- go to https://weatherwidget.io/ in order to generate a custom URL-->
+    <a style="border-radius: 1em;" class="weatherwidget-io" href="https://forecast7.com/en/52d5213d40/berlin/"
+      data-label_1="BERLIN" data-label_2="" data-theme="white"></a>
+    <script>
+      !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+    </script>
+  </div>
+
+  <script> $("#id_weather").delay(500).animate({ opacity: 0.66 }, 700);</script>
+
+
+
+</body>
+
+</html>
