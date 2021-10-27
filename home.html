@@ -141,20 +141,23 @@
 
 
 
-  <div id="id_weather" class="box halftrans top right"
-    style="right: 5em !important; width:360px; background:white; opacity: 0; padding-bottom: 1.1em; -webkit-transition: opacity 2s ease-in;">
-    <!-- go to https://weatherwidget.io/ in order to generate a custom URL -->
-    <a style="border-radius: 1em;" class="weatherwidget-io" href="https://forecast7.com/en/52d5213d40/berlin/"
-      data-label_1="BERLIN" data-label_2="" data-theme="white"></a>
+  <div id="id_weather" class="box halftrans top right" style="right: 5em !important; width:360px; background:white; opacity: 0; padding-bottom: 1.1em; -webkit-transition: opacity 2s ease-in;">
+    
+    <!--
+      go to https://weatherwidget.io/ in order to generate a custom URL:
+      BERLIN         https://forecast7.com/en/52d5213d40/berlin/
+      MUNICH         https://forecast7.com/en/48d1411d58/munich/
+    -->
+    <a style="border-radius: 1em;" class="weatherwidget-io" href="https://forecast7.com/en/52d5213d40/berlin/" data-label_1="BERLIN" data-label_2="" data-theme="white"></a>
+    
     <script>
      !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
 
      // auto-refresh weather
      setInterval(function(){
-      var iframe_weather = document.getElementsByTagName("iframe")[0];  // EXPECTING weather to be the only iframe on page
+      var iframe_weather = document.getElementsByTagName("iframe")[0];  // EXPECTING weather to be the only iframe on the page
       iframe_weather.src = iframe_weather.src;
-     }, 1000*60*5); // 5 mins
-
+     }, 1000*60*5);  // 5 mins
   </script>
   </div>
 
