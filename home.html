@@ -98,7 +98,9 @@
   .left {
     position: absolute;
     left: 2em;
-    text-align: left;
+    width: 25em;
+    padding: 0%;
+    text-align: center;
   }
 
   .right {
@@ -133,7 +135,7 @@
     <script>set_content__time("id_time", 1000);</script>
     <script> $("#id_time").delay(300).animate({ opacity: 0.88 }, 700);</script>
 
-    <h1 id="id_date" class="date" style="opacity: 0; text-align: center;"></h1>
+    <h1 id="id_date" class="date" style="opacity: 0; width: 100%; text-align: center;"></h1>
     <script>set_content__date("id_date", 1000);</script>
     <script> $("#id_date").delay(500).animate({ opacity: 0.66 }, 900);</script>
 
